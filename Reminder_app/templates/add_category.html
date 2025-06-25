@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow p-4">
+            <h2 class="mb-4 text-center text-primary">Add New Category</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p|safe }}
+                <button type="submit" class="btn btn-success w-100">Add Category</button>
+            </form>
+            <a href="{% url 'category_list' %}" class="btn btn-link mt-3 w-100">&larr; Back to Categories</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -25,5 +25,6 @@ urlpatterns = [
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('', signup_view, name='signup'),  
     path('reminders/', include('Reminder_app.urls')),
+    path('api/', include('Reminder_app.api_urls')),
 ]
 

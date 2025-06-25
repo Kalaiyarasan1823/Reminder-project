@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card shadow p-4">
+            <h2 class="mb-4 text-center text-primary">Import Reminders</h2>
+            
+            <div class="alert alert-info">
+                <h5>📋 Import Instructions:</h5>
+                <ul class="mb-0">
+                    <li>Upload a CSV file with the following columns: Title, Description, Date, Time, Priority, Completed, Category, Repeat Type</li>
+                    <li>Date format: YYYY-MM-DD (e.g., 2024-01-15)</li>
+                    <li>Time format: HH:MM:SS (e.g., 14:30:00)</li>
+                    <li>Priority: low, medium, or high</li>
+                    <li>Completed: true or false</li>
+                    <li>Repeat Type: none, daily, weekly, monthly, or yearly</li>
+                </ul>
+            </div>
+            
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="csv_file" class="form-label">Select CSV File</label>
+                    <input type="file" class="form-control" id="csv_file" name="csv_file" accept=".csv" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Import Reminders</button>
+            </form>
+            
+            <div class="mt-3 text-center">
+                <a href="{% url 'reminder_list' %}" class="btn btn-link">&larr; Back to Reminders</a>
+                <a href="{% url 'export_reminders' %}" class="btn btn-outline-primary">Download Sample CSV</a>
+            </div>
+        </div>
+    </div>
+ 
